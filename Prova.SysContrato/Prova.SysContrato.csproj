@@ -72,6 +72,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SysContratoDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SysContratoDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SysContratoDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="View\FCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +166,17 @@
     </None>
     <None Include="SysContratoDataSet2.xss">
       <DependentUpon>SysContratoDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SysContratoDataSet3.xsc">
+      <DependentUpon>SysContratoDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SysContratoDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SysContratoDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SysContratoDataSet3.xss">
+      <DependentUpon>SysContratoDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

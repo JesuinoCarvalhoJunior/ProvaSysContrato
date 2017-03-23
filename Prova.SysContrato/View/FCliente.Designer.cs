@@ -33,7 +33,7 @@
             System.Windows.Forms.Label nomeLabel;
             System.Windows.Forms.Label cPFLabel;
             System.Windows.Forms.Label nomeLabel1;
-            System.Windows.Forms.Label cpfLabel1;
+            System.Windows.Forms.Label cnpjLabel;
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -57,16 +57,24 @@
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaTableAdapter = new Prova.SysContrato.SysContratoDataSet2TableAdapters.PessoaTableAdapter();
             this.tableAdapterManager1 = new Prova.SysContrato.SysContratoDataSet2TableAdapters.TableAdapterManager();
-            this.nomeTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.pessoaFisicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaFisicaTableAdapter = new Prova.SysContrato.SysContratoDataSet2TableAdapters.PessoaFisicaTableAdapter();
-            this.cpfTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.pessoaFisicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.pessoaJuridicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pessoaJuridicaTableAdapter = new Prova.SysContrato.SysContratoDataSet2TableAdapters.PessoaJuridicaTableAdapter();
+            this.sysContratoDataSet3 = new Prova.SysContrato.SysContratoDataSet3();
+            this.pessoaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pessoaTableAdapter1 = new Prova.SysContrato.SysContratoDataSet3TableAdapters.PessoaTableAdapter();
+            this.tableAdapterManager2 = new Prova.SysContrato.SysContratoDataSet3TableAdapters.TableAdapterManager();
+            this.nomeTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.pessoaJuridicaBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pessoaJuridicaTableAdapter1 = new Prova.SysContrato.SysContratoDataSet3TableAdapters.PessoaJuridicaTableAdapter();
+            this.cnpjTextEdit = new DevExpress.XtraEditors.TextEdit();
             dataNascimentoLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
             cPFLabel = new System.Windows.Forms.Label();
             nomeLabel1 = new System.Windows.Forms.Label();
-            cpfLabel1 = new System.Windows.Forms.Label();
+            cnpjLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientedataGridView)).BeginInit();
@@ -74,9 +82,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaFisicaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpfTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cnpjTextEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataNascimentoLabel
@@ -96,6 +108,15 @@
             nomeLabel.Size = new System.Drawing.Size(38, 13);
             nomeLabel.TabIndex = 15;
             nomeLabel.Text = "Nome:";
+            // 
+            // cPFLabel
+            // 
+            cPFLabel.AutoSize = true;
+            cPFLabel.Location = new System.Drawing.Point(31, 36);
+            cPFLabel.Name = "cPFLabel";
+            cPFLabel.Size = new System.Drawing.Size(30, 13);
+            cPFLabel.TabIndex = 23;
+            cPFLabel.Text = "CPF:";
             // 
             // btnAlterar
             // 
@@ -237,19 +258,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 451);
+            this.textBox1.Location = new System.Drawing.Point(98, 425);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(320, 20);
             this.textBox1.TabIndex = 23;
-            // 
-            // cPFLabel
-            // 
-            cPFLabel.AutoSize = true;
-            cPFLabel.Location = new System.Drawing.Point(31, 36);
-            cPFLabel.Name = "cPFLabel";
-            cPFLabel.Size = new System.Drawing.Size(30, 13);
-            cPFLabel.TabIndex = 23;
-            cPFLabel.Text = "CPF:";
             // 
             // cPFTextBox
             // 
@@ -283,52 +295,18 @@
             this.tableAdapterManager1.PessoaTableAdapter = this.pessoaTableAdapter;
             this.tableAdapterManager1.UpdateOrder = Prova.SysContrato.SysContratoDataSet2TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // nomeLabel1
+            // pessoaFisicaTableAdapter
             // 
-            nomeLabel1.AutoSize = true;
-            nomeLabel1.Location = new System.Drawing.Point(628, 118);
-            nomeLabel1.Name = "nomeLabel1";
-            nomeLabel1.Size = new System.Drawing.Size(38, 13);
-            nomeLabel1.TabIndex = 24;
-            nomeLabel1.Text = "Nome:";
-            // 
-            // nomeTextEdit
-            // 
-            this.nomeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pessoaBindingSource, "Nome", true));
-            this.nomeTextEdit.Location = new System.Drawing.Point(672, 115);
-            this.nomeTextEdit.Name = "nomeTextEdit";
-            this.nomeTextEdit.Size = new System.Drawing.Size(100, 20);
-            this.nomeTextEdit.TabIndex = 25;
+            this.pessoaFisicaTableAdapter.ClearBeforeFill = true;
             // 
             // pessoaFisicaBindingSource
             // 
             this.pessoaFisicaBindingSource.DataMember = "FKFCEA32D919D474";
             this.pessoaFisicaBindingSource.DataSource = this.pessoaBindingSource;
             // 
-            // pessoaFisicaTableAdapter
-            // 
-            this.pessoaFisicaTableAdapter.ClearBeforeFill = true;
-            // 
-            // cpfLabel1
-            // 
-            cpfLabel1.AutoSize = true;
-            cpfLabel1.Location = new System.Drawing.Point(640, 163);
-            cpfLabel1.Name = "cpfLabel1";
-            cpfLabel1.Size = new System.Drawing.Size(26, 13);
-            cpfLabel1.TabIndex = 25;
-            cpfLabel1.Text = "Cpf:";
-            // 
-            // cpfTextEdit
-            // 
-            this.cpfTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pessoaFisicaBindingSource, "Cpf", true));
-            this.cpfTextEdit.Location = new System.Drawing.Point(672, 160);
-            this.cpfTextEdit.Name = "cpfTextEdit";
-            this.cpfTextEdit.Size = new System.Drawing.Size(100, 20);
-            this.cpfTextEdit.TabIndex = 26;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(672, 219);
+            this.button1.Location = new System.Drawing.Point(586, 340);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 27;
@@ -336,16 +314,91 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pessoaJuridicaBindingSource
+            // 
+            this.pessoaJuridicaBindingSource.DataMember = "FK29ED03F919D474";
+            this.pessoaJuridicaBindingSource.DataSource = this.pessoaBindingSource;
+            // 
+            // pessoaJuridicaTableAdapter
+            // 
+            this.pessoaJuridicaTableAdapter.ClearBeforeFill = true;
+            // 
+            // sysContratoDataSet3
+            // 
+            this.sysContratoDataSet3.DataSetName = "SysContratoDataSet3";
+            this.sysContratoDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pessoaBindingSource1
+            // 
+            this.pessoaBindingSource1.DataMember = "Pessoa";
+            this.pessoaBindingSource1.DataSource = this.sysContratoDataSet3;
+            // 
+            // pessoaTableAdapter1
+            // 
+            this.pessoaTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager2
+            // 
+            this.tableAdapterManager2.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager2.PessoaFisicaTableAdapter = null;
+            this.tableAdapterManager2.PessoaJuridicaTableAdapter = this.pessoaJuridicaTableAdapter1;
+            this.tableAdapterManager2.PessoaTableAdapter = this.pessoaTableAdapter1;
+            this.tableAdapterManager2.TelefoneTableAdapter = null;
+            this.tableAdapterManager2.UpdateOrder = Prova.SysContrato.SysContratoDataSet3TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // nomeLabel1
+            // 
+            nomeLabel1.AutoSize = true;
+            nomeLabel1.Location = new System.Drawing.Point(611, 154);
+            nomeLabel1.Name = "nomeLabel1";
+            nomeLabel1.Size = new System.Drawing.Size(38, 13);
+            nomeLabel1.TabIndex = 27;
+            nomeLabel1.Text = "Nome:";
+            // 
+            // nomeTextEdit
+            // 
+            this.nomeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pessoaBindingSource, "Nome", true));
+            this.nomeTextEdit.Location = new System.Drawing.Point(646, 151);
+            this.nomeTextEdit.Name = "nomeTextEdit";
+            this.nomeTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.nomeTextEdit.TabIndex = 28;
+            // 
+            // pessoaJuridicaBindingSource1
+            // 
+            this.pessoaJuridicaBindingSource1.DataMember = "FK29ED03F919D474";
+            this.pessoaJuridicaBindingSource1.DataSource = this.pessoaBindingSource1;
+            // 
+            // pessoaJuridicaTableAdapter1
+            // 
+            this.pessoaJuridicaTableAdapter1.ClearBeforeFill = true;
+            // 
+            // cnpjLabel
+            // 
+            cnpjLabel.AutoSize = true;
+            cnpjLabel.Location = new System.Drawing.Point(594, 234);
+            cnpjLabel.Name = "cnpjLabel";
+            cnpjLabel.Size = new System.Drawing.Size(31, 13);
+            cnpjLabel.TabIndex = 28;
+            cnpjLabel.Text = "Cnpj:";
+            // 
+            // cnpjTextEdit
+            // 
+            this.cnpjTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pessoaJuridicaBindingSource1, "Cnpj", true));
+            this.cnpjTextEdit.Location = new System.Drawing.Point(631, 231);
+            this.cnpjTextEdit.Name = "cnpjTextEdit";
+            this.cnpjTextEdit.Size = new System.Drawing.Size(100, 20);
+            this.cnpjTextEdit.TabIndex = 29;
+            // 
             // FCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 506);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(cpfLabel1);
-            this.Controls.Add(this.cpfTextEdit);
+            this.ClientSize = new System.Drawing.Size(905, 488);
+            this.Controls.Add(cnpjLabel);
+            this.Controls.Add(this.cnpjTextEdit);
             this.Controls.Add(nomeLabel1);
             this.Controls.Add(this.nomeTextEdit);
+            this.Controls.Add(this.button1);
             this.Controls.Add(cPFLabel);
             this.Controls.Add(this.cPFTextBox);
             this.Controls.Add(this.textBox1);
@@ -370,9 +423,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaFisicaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cpfTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cnpjTextEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,9 +461,17 @@
         private SysContratoDataSet2TableAdapters.PessoaTableAdapter pessoaTableAdapter;
         private SysContratoDataSet2TableAdapters.TableAdapterManager tableAdapterManager1;
         private SysContratoDataSet2TableAdapters.PessoaFisicaTableAdapter pessoaFisicaTableAdapter;
-        private DevExpress.XtraEditors.TextEdit nomeTextEdit;
         private System.Windows.Forms.BindingSource pessoaFisicaBindingSource;
-        private DevExpress.XtraEditors.TextEdit cpfTextEdit;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.BindingSource pessoaJuridicaBindingSource;
+        private SysContratoDataSet2TableAdapters.PessoaJuridicaTableAdapter pessoaJuridicaTableAdapter;
+        private SysContratoDataSet3 sysContratoDataSet3;
+        private System.Windows.Forms.BindingSource pessoaBindingSource1;
+        private SysContratoDataSet3TableAdapters.PessoaTableAdapter pessoaTableAdapter1;
+        private SysContratoDataSet3TableAdapters.TableAdapterManager tableAdapterManager2;
+        private SysContratoDataSet3TableAdapters.PessoaJuridicaTableAdapter pessoaJuridicaTableAdapter1;
+        private DevExpress.XtraEditors.TextEdit nomeTextEdit;
+        private System.Windows.Forms.BindingSource pessoaJuridicaBindingSource1;
+        private DevExpress.XtraEditors.TextEdit cnpjTextEdit;
     }
 }

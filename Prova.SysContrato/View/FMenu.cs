@@ -33,12 +33,7 @@ namespace Prova.SysContrato.View
             }
         }
 
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
+ 
         private void contratoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (FContrato contrato = new FContrato())
@@ -51,6 +46,11 @@ namespace Prova.SysContrato.View
                     throw new Exception("Não foi possível acessar a rotina " + ex.Message);
                 }
             }
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -20,10 +20,18 @@ namespace Prova.SysContrato.View
         public int IdCliente;
 
         //
+        
         private RepositorioBase<PessoaFisica> _pf;
+        private RepositorioBase<PessoaJuridica> _pJ;
+
+
         private PessoaFisica pessoaFisca = new PessoaFisica();
+        private PessoaJuridica pessoaJuridica = new PessoaJuridica();
+
+        
 
         private PessoaFisica pf = new PessoaFisica();
+        private PessoaJuridica pj = new PessoaJuridica();
         //
 
         public FCliente()
@@ -32,6 +40,12 @@ namespace Prova.SysContrato.View
             clienteBindingSource.DataSource = cliente;
 
             pessoaBindingSource.DataSource = pessoaFisca;
+
+            pessoaJuridicaBindingSource.DataSource = pessoaJuridica;
+
+            pessoaJuridicaBindingSource1.DataSource = pessoaJuridica;
+
+            pessoaBindingSource.DataSource = pessoaJuridica;
 
             ListarCliente();
         }
@@ -43,6 +57,12 @@ namespace Prova.SysContrato.View
 
         private void FCliente_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'sysContratoDataSet3.PessoaJuridica' table. You can move, or remove it, as needed.
+            this.pessoaJuridicaTableAdapter1.Fill(this.sysContratoDataSet3.PessoaJuridica);
+            // TODO: This line of code loads data into the 'sysContratoDataSet3.Pessoa' table. You can move, or remove it, as needed.
+            this.pessoaTableAdapter1.Fill(this.sysContratoDataSet3.Pessoa);
+            // TODO: This line of code loads data into the 'sysContratoDataSet2.PessoaJuridica' table. You can move, or remove it, as needed.
+            this.pessoaJuridicaTableAdapter.Fill(this.sysContratoDataSet2.PessoaJuridica);
             // TODO: This line of code loads data into the 'sysContratoDataSet2.PessoaFisica' table. You can move, or remove it, as needed.
             this.pessoaFisicaTableAdapter.Fill(this.sysContratoDataSet2.PessoaFisica);
             // TODO: This line of code loads data into the 'sysContratoDataSet2.Pessoa' table. You can move, or remove it, as needed.
@@ -150,12 +170,19 @@ namespace Prova.SysContrato.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-     
-            _pf = new RepositorioBase<PessoaFisica>();
 
-                _pf.Inserir(pessoaFisca);
- 
-            
+           //    _pf = new RepositorioBase<PessoaFisica>();
+
+              //     _pf.Inserir(pessoaFisca);
+
+
+           _pJ = new RepositorioBase<PessoaJuridica>();
+
+
+
+           
+            _pJ.Inserir(pessoaJuridica);
+
         }
     }
 }
