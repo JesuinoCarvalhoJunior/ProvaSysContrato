@@ -10,7 +10,7 @@ namespace SysContrato.Dominio.Entidade
     {
         public virtual int Id { get; set; }
         public virtual int CodigoDdd { get; set; }
-        public virtual int Numero { get; set; }
+        public virtual String Numero { get; set; }
         public virtual Pessoa Pessoa { get; set; }
     }
 }

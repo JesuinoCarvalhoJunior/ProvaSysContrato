@@ -1,4 +1,6 @@
-﻿using SysContrato.Dominio.Entidade;
+﻿using NHibernate;
+using NHibernate.Linq;
+using SysContrato.Dominio.Entidade;
 using SysContrato.Dominio.IRepositorio;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,17 @@ namespace SysContrato.Dados.Repositorio
     {
         public IList<Telefone> PesquisarPorTelefone(string NumeroTelfone)
         {
-            throw new NotImplementedException();
+            using (ISession session = NHibernateHelper.AbrirSessao())
+            {
+                try
+                {
+                    return session.Query<Telefone>().Where(c => c.Numero == NumeroTelfone).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao pesquisar o registro" + ex.Message);
+                }
+            }
         }
     }
 }
