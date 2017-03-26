@@ -19,12 +19,14 @@ namespace Prova.SysContrato.View
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (FCliente cliente = new FCliente())
+            using (FCliente Fcliente = new FCliente())
             {
                 try
                 {
-                    cliente.ShowDialog();
-                }catch (Exception ex)
+                    HelperOpenScreen.AbrirFormulario<FCliente>();
+                    // Fcliente.ShowDialog();
+                }
+                catch (Exception ex)
                 {
                     throw new Exception("Não foi possível acessar a rotina " + ex.Message);
                 }
@@ -36,11 +38,11 @@ namespace Prova.SysContrato.View
  
         private void contratoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (FContrato contrato = new FContrato())
+            using (FContrato Fcontrato = new FContrato())
             {
                 try
                 {
-                    contrato.ShowDialog();
+                    Fcontrato.ShowDialog();
                 }catch (Exception ex)
                 {
                     throw new Exception("Não foi possível acessar a rotina " + ex.Message);
@@ -52,5 +54,11 @@ namespace Prova.SysContrato.View
         {
             Close();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

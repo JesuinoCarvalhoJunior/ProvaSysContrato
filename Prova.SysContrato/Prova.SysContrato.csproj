@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="View\HelperFormatacao.cs" />
     <Compile Include="View\HelperMensagem.cs" />
+    <Compile Include="View\HelperOpenScreen.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
