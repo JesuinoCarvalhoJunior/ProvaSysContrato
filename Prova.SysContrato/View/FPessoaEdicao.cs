@@ -44,10 +44,7 @@ namespace Prova.SysContrato.View
 
         private void PesquisaPessoaId()
         {
-
          pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorId(PessoaId);
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
