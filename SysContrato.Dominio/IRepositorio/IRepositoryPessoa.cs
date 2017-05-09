@@ -8,7 +8,7 @@ namespace SysContrato.Dominio.IRepositorio
 {
     public interface IRepositoryPessoa<Pessoa>
     {
-        IList<Pessoa> PesquisarPorNome(string nome);
+     //   IList<Pessoa> PesquisarPorNome(string nome);
 
         bool ClienteTemContrato(int IdPessoa);
 

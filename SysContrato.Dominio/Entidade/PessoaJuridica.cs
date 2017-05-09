@@ -9,6 +9,7 @@ namespace SysContrato.Dominio.Entidade
   public  class PessoaJuridica : Pessoa
     {
         public virtual string Cnpj { get; set; }
+
         public virtual DateTime DataAbertura { get; set; }
     }
 }

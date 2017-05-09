@@ -35,10 +35,10 @@
             System.Windows.Forms.Label nomeLabel;
             System.Windows.Forms.Label dataInicioLabel;
             System.Windows.Forms.Label dataFimLabel;
-            this.sysContratoDataSet = new Prova.SysContrato.SysContratoDataSet();
+   
             this.contratoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contratoTableAdapter = new Prova.SysContrato.SysContratoDataSetTableAdapters.ContratoTableAdapter();
-            this.tableAdapterManager = new Prova.SysContrato.SysContratoDataSetTableAdapters.TableAdapterManager();
+         
+         
             this.numeroTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.descricaoTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.valorSpinEdit = new DevExpress.XtraEditors.SpinEdit();
@@ -47,10 +47,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.sysContratoDataSet1 = new Prova.SysContrato.SysContratoDataSet1();
-            this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clienteTableAdapter = new Prova.SysContrato.SysContratoDataSet1TableAdapters.ClienteTableAdapter();
-            this.tableAdapterManager1 = new Prova.SysContrato.SysContratoDataSet1TableAdapters.TableAdapterManager();
             this.nomeComboBox = new System.Windows.Forms.ComboBox();
             this.dataInicioDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataFimDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -67,13 +63,12 @@
             nomeLabel = new System.Windows.Forms.Label();
             dataInicioLabel = new System.Windows.Forms.Label();
             dataFimLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet)).BeginInit();
+  
             ((System.ComponentModel.ISupportInitialize)(this.contratoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.descricaoTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.valorSpinEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contratoDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,25 +110,14 @@
             // 
             // sysContratoDataSet
             // 
-            this.sysContratoDataSet.DataSetName = "SysContratoDataSet";
-            this.sysContratoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+   
             // 
             // contratoBindingSource
             // 
             this.contratoBindingSource.DataMember = "Contrato";
-            this.contratoBindingSource.DataSource = this.sysContratoDataSet;
+       
             // 
-            // contratoTableAdapter
-            // 
-            this.contratoTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.ContratoTableAdapter = this.contratoTableAdapter;
-            this.tableAdapterManager.UpdateOrder = Prova.SysContrato.SysContratoDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // numeroTextEdit
+    
             // 
             this.numeroTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.contratoBindingSource, "Numero", true));
             this.numeroTextEdit.Location = new System.Drawing.Point(85, 21);
@@ -221,26 +205,15 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // sysContratoDataSet1
+             // clienteBindingSource
             // 
-            this.sysContratoDataSet1.DataSetName = "SysContratoDataSet1";
-            this.sysContratoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clienteBindingSource
-            // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.sysContratoDataSet1;
+          //  this.clienteBindingSource.DataMember = "Cliente";
+         //   this.clienteBindingSource.DataSource = this.sysContratoDataSet1;
             // 
             // clienteTableAdapter
+       
             // 
-            this.clienteTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.ClienteTableAdapter = this.clienteTableAdapter;
-            this.tableAdapterManager1.UpdateOrder = Prova.SysContrato.SysContratoDataSet1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
+        
             // nomeComboBox
             // 
             this.nomeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.clienteBindingSource, "Nome", true));
@@ -359,26 +332,19 @@
             this.Controls.Add(this.numeroTextEdit);
             this.Name = "FContrato";
             this.Text = "FContrato";
-            this.Load += new System.EventHandler(this.FContrato_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contratoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numeroTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.descricaoTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.valorSpinEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contratoDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sysContratoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
-
-        private SysContratoDataSet sysContratoDataSet;
-        private System.Windows.Forms.BindingSource contratoBindingSource;
-        private SysContratoDataSetTableAdapters.ContratoTableAdapter contratoTableAdapter;
-        private SysContratoDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        
+        private System.Windows.Forms.BindingSource contratoBindingSource; 
         private DevExpress.XtraEditors.TextEdit numeroTextEdit;
         private DevExpress.XtraEditors.TextEdit descricaoTextEdit;
         private DevExpress.XtraEditors.SpinEdit valorSpinEdit;
@@ -387,10 +353,9 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
-        private SysContratoDataSet1 sysContratoDataSet1;
+
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private SysContratoDataSet1TableAdapters.ClienteTableAdapter clienteTableAdapter;
-        private SysContratoDataSet1TableAdapters.TableAdapterManager tableAdapterManager1;
+
         private System.Windows.Forms.ComboBox nomeComboBox;
         private System.Windows.Forms.DateTimePicker dataInicioDateTimePicker;
         private System.Windows.Forms.DateTimePicker dataFimDateTimePicker;

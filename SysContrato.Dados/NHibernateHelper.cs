@@ -15,6 +15,17 @@ namespace SysContrato.Dados
     {
         private static string StringConexao = "Data Source=JCARVALHOJR\\SQLEXPRESS;Initial Catalog=SysContrato;Integrated Security=True";
         private static ISessionFactory _sessionFactory;
+
+        public static ISessionFactory SessionFactory
+        {
+            get
+            {
+                if (_sessionFactory == null)
+                    Configurar();
+                return _sessionFactory;
+            }
+        }
+
         public static void Configurar()
         {
             FluentConfiguration configuracao = Fluently.Configure()
@@ -29,6 +40,7 @@ namespace SysContrato.Dados
         public static ISession AbrirSessao()
         {
             return _sessionFactory.OpenSession();
-        }
+        }      
+
     }
 }

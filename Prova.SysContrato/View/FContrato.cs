@@ -49,22 +49,6 @@ namespace Prova.SysContrato.View
             nomeComboBox.DataSource = _repositorioCliente.Pesquisa();
         }
 
-        private void contratoBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.contratoBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.sysContratoDataSet);
-
-        }
-
-        private void FContrato_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'sysContratoDataSet1.Cliente' table. You can move, or remove it, as needed.
-            this.clienteTableAdapter.Fill(this.sysContratoDataSet1.Cliente);
-            // TODO: This line of code loads data into the 'sysContratoDataSet.Contrato' table. You can move, or remove it, as needed.
-            this.contratoTableAdapter.Fill(this.sysContratoDataSet.Contrato);
-
-        }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {

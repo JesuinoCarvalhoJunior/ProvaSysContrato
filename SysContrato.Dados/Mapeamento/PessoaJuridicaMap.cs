@@ -13,6 +13,7 @@ namespace SysContrato.Dados.Mapeamento
         PessoaJuridicaMap()
         {
             Map(c => c.Cnpj).Length(14).Not.Nullable();
+            Map(c => c.DataAbertura).Not.Nullable();
         }
     }
 }

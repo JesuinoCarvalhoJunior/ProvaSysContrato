@@ -27,6 +27,7 @@ namespace SysContrato.Dados.Repositorio
             }
         }
 
+        
         public IList<Pessoa> PesquisarPorNome(string nome)
         {
             using (ISession session = NHibernateHelper.AbrirSessao())
@@ -42,5 +43,6 @@ namespace SysContrato.Dados.Repositorio
                 }
             }
         }
+        
     }
 }

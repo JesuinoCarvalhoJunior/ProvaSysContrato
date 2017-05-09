@@ -19,84 +19,88 @@ namespace Prova.SysContrato.View
         public Cliente cliente = new Cliente();
         public int IdCliente;
 
-        //
-        
-        private RepositorioBase<PessoaFisica> _pf;
-        private RepositorioBase<PessoaJuridica> _pJ;
 
+        private RepositorioBase<Pessoa> _repositorioBasePessoa;
+
+        private RepositorioPessoaFisica _repositorioPessoaFisica;
+        private RepositorioPessoaJuridica _repositorioPessoaJuridica;
 
         private PessoaFisica pessoaFisca = new PessoaFisica();
         private PessoaJuridica pessoaJuridica = new PessoaJuridica();
-
-        
-
-        private PessoaFisica pf = new PessoaFisica();
-        private PessoaJuridica pj = new PessoaJuridica();
-        //
 
         public FCliente()
         {
             InitializeComponent();
             clienteBindingSource.DataSource = cliente;
 
-            pessoaBindingSource.DataSource = pessoaFisca;
-
-            pessoaJuridicaBindingSource.DataSource = pessoaJuridica;
-
-            pessoaJuridicaBindingSource1.DataSource = pessoaJuridica;
-
-            pessoaBindingSource.DataSource = pessoaJuridica;
+            pessoaFisicaBindingSource.DataSource = pessoaFisca;
 
             ListarCliente();
         }
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            clientedataGridView.DataSource = _repositorioCliente.PesquisarPorCPF(textBox1.Text);
+            //clientedataGridView.DataSource = _repositorioCliente.PesquisarPorCPF(textBox1.Text);
+            pessoaDataGridView.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
         }
 
         private void FCliente_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'sysContratoDataSet3.PessoaJuridica' table. You can move, or remove it, as needed.
-            this.pessoaJuridicaTableAdapter1.Fill(this.sysContratoDataSet3.PessoaJuridica);
-            // TODO: This line of code loads data into the 'sysContratoDataSet3.Pessoa' table. You can move, or remove it, as needed.
-            this.pessoaTableAdapter1.Fill(this.sysContratoDataSet3.Pessoa);
-            // TODO: This line of code loads data into the 'sysContratoDataSet2.PessoaJuridica' table. You can move, or remove it, as needed.
-            this.pessoaJuridicaTableAdapter.Fill(this.sysContratoDataSet2.PessoaJuridica);
-            // TODO: This line of code loads data into the 'sysContratoDataSet2.PessoaFisica' table. You can move, or remove it, as needed.
-            this.pessoaFisicaTableAdapter.Fill(this.sysContratoDataSet2.PessoaFisica);
-            // TODO: This line of code loads data into the 'sysContratoDataSet2.Pessoa' table. You can move, or remove it, as needed.
-            this.pessoaTableAdapter.Fill(this.sysContratoDataSet2.Pessoa);
-            // TODO: This line of code loads data into the 'sysContratoDataSet1.Cliente' table. You can move, or remove it, as needed.
-            this.clienteTableAdapter.Fill(this.sysContratoDataSet1.Cliente);
 
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            cliente.CPF = HelperFormatacao.RemoverFormatacao(cPFTextBox.Text);
-            _repositorioCliente = new RepositorioCliente();
-
-            if (_repositorioCliente.CPFExiste(cliente.CPF))
+            if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 11)
             {
-                MessageBox.Show("Este CPF já está cadastrado!");
+                _repositorioPessoaFisica = new RepositorioPessoaFisica();
+                pessoaFisca.Cpf = HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text);
+
+                if (_repositorioPessoaFisica.CPFExiste(pessoaFisca.Cpf))
+                {
+                    MessageBox.Show("Este CPF já está cadastrado!");
+                }
+                else
+                {
+                    _repositorioPessoaFisica.Inserir(pessoaFisca);
+                    ListarCliente();
+                }
             }
             else
             {
-                _repositorioCliente.Inserir(cliente);
-                ListarCliente();
+                if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 14)
+                {
+                    PessoaJuridica pessoaJuridica = new PessoaJuridica();
+
+                    pessoaBindingSource.DataSource = pessoaJuridica;
+
+                    _repositorioPessoaJuridica = new RepositorioPessoaJuridica();
+
+                    pessoaJuridica.Cnpj = HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text);
+
+
+                    if (_repositorioPessoaJuridica.CNPJExiste(pessoaJuridica.Cnpj))
+                    {
+                        MessageBox.Show("Este CNPJ já está cadastrado!");
+                    }
+                    else
+                        //   {
+                        _repositorioPessoaJuridica.Inserir(pessoaJuridica);
+                    ListarCliente();
+                    //  }
+
+                }
             }
         }
 
-
         private void ListarCliente()
         {
-            if (_repositorioCliente == null)
+            if (_repositorioBasePessoa == null)
             {
-                _repositorioCliente = new RepositorioCliente();
+                _repositorioBasePessoa = new RepositorioBase<Pessoa>();
 
             }
-            clientedataGridView.DataSource = _repositorioCliente.Pesquisa();
+            pessoaDataGridView.DataSource = _repositorioBasePessoa.Pesquisa();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -109,7 +113,7 @@ namespace Prova.SysContrato.View
                 //excluirCliente = clientedataGridView.SelectedRows[0].DataBoundItem as Cliente;
                 //if (_repositorioCliente.ClienteTemContrato((Convert.ToInt32(clientedataGridView.CurrentRow.Cells[0].Value))))
 
-                cliente = _repositorioCliente.PesquisarPorId(Convert.ToInt32(clientedataGridView.CurrentRow.Cells[0].Value));
+                //  cliente = _repositorioCliente.PesquisarPorId(Convert.ToInt32(clientedataGridView.CurrentRow.Cells[0].Value));
 
                 if (_repositorioCliente.ClienteTemContrato((Convert.ToInt32(cliente.Id))))
                 {
@@ -122,7 +126,6 @@ namespace Prova.SysContrato.View
                     {
                         _repositorioCliente.Excluir(cliente);
                     }
-
                 }
                 ListarCliente();
             }
@@ -139,17 +142,33 @@ namespace Prova.SysContrato.View
         {
             try
             {
-                FClienteEdicao fClienteEdicao = new FClienteEdicao();
-                fClienteEdicao.ClienteId = (clientedataGridView.CurrentRow.DataBoundItem as Cliente).Id;
-                fClienteEdicao.ShowDialog();
+                // FPessoaEdicao.PessoaId = (pessoaDataGridView.CurrentRow.DataBoundItem as PessoaFisica).Id;
+                //  HelperOpenScreen.AbrirFormulario<FPessoaEdicao>();
+
+                FPessoaEdicao FPessoaEdicao = new FPessoaEdicao();
+                FPessoaEdicao.PessoaId = (pessoaDataGridView.CurrentRow.DataBoundItem as PessoaFisica).Id;
+                FPessoaEdicao.ShowDialog();
             }
+
+
             catch (Exception ex)
             {
                 throw new Exception("Não foi possível acessar a rotina " + ex.Message);
             }
-            ListarCliente();
         }
 
+        // try
+        // {
+        //   FClienteEdicao fClienteEdicao = new FClienteEdicao();
+        ///     fClienteEdicao.ClienteId = (clientedataGridView.CurrentRow.DataBoundItem as Cliente).Id;
+        //   fClienteEdicao.ShowDialog();
+        //  }
+        //  catch (Exception ex)
+        // {
+        //   throw new Exception("Não foi possível acessar a rotina " + ex.Message);
+        //}
+        //    ListarCliente();
+        //
         private void cPFTextBox_Validating(object sender, CancelEventArgs e)
         {
             if ((HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 11) && (HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 14))
@@ -157,9 +176,10 @@ namespace Prova.SysContrato.View
                 MessageBox.Show("CPF ou CNPJ inváildo!");
                 cPFTextBox.Focus();
                 cPFTextBox.Clear();
-            } else
+            }
+            else
             {
-              cPFTextBox.Text = HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text);
+                cPFTextBox.Text = HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text);
             }
         }
 
@@ -168,21 +188,85 @@ namespace Prova.SysContrato.View
             cPFTextBox.Text = HelperFormatacao.RemoverFormatacao(cPFTextBox.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void clientedataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-           //    _pf = new RepositorioBase<PessoaFisica>();
+        }
 
-              //     _pf.Inserir(pessoaFisca);
+        private void cpfTextEdit_Validating(object sender, CancelEventArgs e)
+        {
+            // if ((HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 11) && (HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 14))
+            //{
+            //     MessageBox.Show("CPF ou CNPJ inváildo!");
+            //     cPFTextBox.Focus();
+            //     cPFTextBox.Clear();
+            // }
+            // else
+            // {
+            cPFTextBox.Text = HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text);
+            //}
+        }
+
+        private void textBoxCpfCnpj_Validating(object sender, CancelEventArgs e)
+        {
+            if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 11)
+            {
+                //  pessoaFisicaBindingSource = new BindingSource();
+
+                _repositorioPessoaFisica = new RepositorioPessoaFisica();
+
+                if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 11)
+                {
+                    // preenche grid
+                    //   pessoaDataGridView.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
+
+                    pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
+                }
+            }
+            else
+            {
+                PessoaJuridica pessoaJuridica = new PessoaJuridica();
+                pessoaJuridicaBindingSource.DataSource = pessoaJuridica;
+            }
+
+            // if ((HelperFormatacao.FormataCPFCNPJ(textBoxCpfCnpj.Text).Length != 11) && (HelperFormatacao.FormataCPFCNPJ(textBoxCpfCnpj.Text).Length != 14))
+            //{
+            //     MessageBox.Show("CPF ou CNPJ inváildo!");
+            //     textBoxCpfCnpj.Focus();
+            //     textBoxCpfCnpj.Clear();
+            // }
+            // else
+            // {
+            textBoxCpfCnpj.Text = HelperFormatacao.FormataCPFCNPJ(textBoxCpfCnpj.Text);
+            //}
+        }
+
+        private void textBoxCpfCnpj_Validating_1(object sender, CancelEventArgs e)
+        {
 
 
-           _pJ = new RepositorioBase<PessoaJuridica>();
 
+            if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 14)
+            {
+                using (FPessoaJuridica Fcliente = new FPessoaJuridica())
+                {
+                    try
+                    {
+                        HelperOpenScreen.AbrirFormulario<FPessoaJuridica>();
+                        // Fcliente.ShowDialog();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Não foi possível acessar a rotina " + ex.Message);
+                    }
+                }
+            }
+        }
 
-
-           
-            _pJ.Inserir(pessoaJuridica);
-
+        private void textBoxCpfCnpj_Enter(object sender, EventArgs e)
+        {
+            textBoxCpfCnpj.Text = HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text);
         }
     }
 }

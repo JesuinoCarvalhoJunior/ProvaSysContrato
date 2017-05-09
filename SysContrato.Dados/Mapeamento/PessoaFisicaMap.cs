@@ -13,6 +13,7 @@ namespace SysContrato.Dados.Mapeamento
         PessoaFisicaMap()
         {
             Map(c => c.Cpf).Length(14).Not.Nullable();
+            Map(c => c.DataNascimento).Not.Nullable();
         }
     }
 }
