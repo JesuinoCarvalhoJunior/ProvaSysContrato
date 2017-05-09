@@ -30,8 +30,7 @@ namespace Prova.SysContrato.View
 
             PesquisaPessoaId();
         }
-
-
+        
         public int PessoaId
         {
             get { return pessoaId; }
