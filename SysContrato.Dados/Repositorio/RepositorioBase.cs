@@ -104,10 +104,6 @@ namespace SysContrato.Dados.Repositorio
             }
         }
 
-
-
-
-
         public T PesquisarPorId(int id)
         {
             using (ISession session = NHibernateHelper.AbrirSessao())
@@ -116,6 +112,7 @@ namespace SysContrato.Dados.Repositorio
             }
         }
 
+   
         public T Pesquisar()
         {
             throw new NotImplementedException();

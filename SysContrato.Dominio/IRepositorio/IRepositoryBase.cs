@@ -13,7 +13,8 @@ namespace SysContrato.Dominio.Repositorio
         void Excluir(T entidade);
 
         T PesquisarPorId(int id);
-        T Pesquisar();
+
+            T Pesquisar();
 
 
     }

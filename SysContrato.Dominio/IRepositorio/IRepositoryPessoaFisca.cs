@@ -10,6 +10,8 @@ namespace SysContrato.Dominio.IRepositorio
     {
         IList<PessoaFisica> PesquisarPorCPF(string CPF);
 
+        IList<PessoaFisica> PesquisarPorCPFAproximado(string CPF);
+
         bool CPFExiste(string CPF);
 
 

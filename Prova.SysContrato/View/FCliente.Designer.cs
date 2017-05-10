@@ -37,13 +37,10 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxPesquisaCodigo = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.textBoxPesquisa = new System.Windows.Forms.TextBox();
-            this.comboBoxFiltro = new System.Windows.Forms.ComboBox();
             this.dataNascimentoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cPFTextBox = new System.Windows.Forms.TextBox();
             this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxCpfCnpj = new System.Windows.Forms.TextBox();
@@ -52,6 +49,7 @@
             this.pessoaJuridicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaDataGridView = new System.Windows.Forms.DataGridView();
             this.dataNascimentoDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.btnAtualizar = new System.Windows.Forms.Button();
             dataNascimentoLabel = new System.Windows.Forms.Label();
             nomeLabel = new System.Windows.Forms.Label();
             cPFLabel = new System.Windows.Forms.Label();
@@ -95,7 +93,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(386, 274);
+            this.btnAlterar.Location = new System.Drawing.Point(354, 263);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 25);
             this.btnAlterar.TabIndex = 7;
@@ -105,7 +103,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(275, 274);
+            this.btnCancelar.Location = new System.Drawing.Point(243, 263);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 25);
             this.btnCancelar.TabIndex = 6;
@@ -114,7 +112,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(168, 274);
+            this.btnExcluir.Location = new System.Drawing.Point(136, 263);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 25);
             this.btnExcluir.TabIndex = 5;
@@ -124,7 +122,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(54, 274);
+            this.btnSalvar.Location = new System.Drawing.Point(22, 263);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 25);
             this.btnSalvar.TabIndex = 4;
@@ -134,23 +132,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxPesquisaCodigo);
             this.groupBox1.Controls.Add(this.btnPesquisar);
             this.groupBox1.Controls.Add(this.textBoxPesquisa);
-            this.groupBox1.Controls.Add(this.comboBoxFiltro);
             this.groupBox1.Location = new System.Drawing.Point(26, 203);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(488, 54);
+            this.groupBox1.Size = new System.Drawing.Size(489, 54);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pesquisar por:";
-            // 
-            // textBoxPesquisaCodigo
-            // 
-            this.textBoxPesquisaCodigo.Location = new System.Drawing.Point(81, 21);
-            this.textBoxPesquisaCodigo.Name = "textBoxPesquisaCodigo";
-            this.textBoxPesquisaCodigo.Size = new System.Drawing.Size(320, 20);
-            this.textBoxPesquisaCodigo.TabIndex = 3;
+            this.groupBox1.Text = "Pesquisar por nome:";
             // 
             // btnPesquisar
             // 
@@ -164,23 +153,10 @@
             // 
             // textBoxPesquisa
             // 
-            this.textBoxPesquisa.Location = new System.Drawing.Point(81, 21);
+            this.textBoxPesquisa.Location = new System.Drawing.Point(8, 20);
             this.textBoxPesquisa.Name = "textBoxPesquisa";
-            this.textBoxPesquisa.Size = new System.Drawing.Size(320, 20);
+            this.textBoxPesquisa.Size = new System.Drawing.Size(393, 20);
             this.textBoxPesquisa.TabIndex = 1;
-            // 
-            // comboBoxFiltro
-            // 
-            this.comboBoxFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFiltro.FormattingEnabled = true;
-            this.comboBoxFiltro.Items.AddRange(new object[] {
-            "Todos",
-            "Código",
-            "Nome"});
-            this.comboBoxFiltro.Location = new System.Drawing.Point(6, 19);
-            this.comboBoxFiltro.Name = "comboBoxFiltro";
-            this.comboBoxFiltro.Size = new System.Drawing.Size(69, 21);
-            this.comboBoxFiltro.TabIndex = 0;
             // 
             // dataNascimentoMaskedTextBox
             // 
@@ -190,13 +166,6 @@
             this.dataNascimentoMaskedTextBox.Size = new System.Drawing.Size(100, 20);
             this.dataNascimentoMaskedTextBox.TabIndex = 20;
             this.dataNascimentoMaskedTextBox.ValidatingType = typeof(System.DateTime);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(98, 305);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(320, 20);
-            this.textBox1.TabIndex = 23;
             // 
             // cPFTextBox
             // 
@@ -227,9 +196,9 @@
             // pessoaDataGridView
             // 
             this.pessoaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pessoaDataGridView.Location = new System.Drawing.Point(32, 67);
+            this.pessoaDataGridView.Location = new System.Drawing.Point(26, 67);
             this.pessoaDataGridView.Name = "pessoaDataGridView";
-            this.pessoaDataGridView.Size = new System.Drawing.Size(482, 130);
+            this.pessoaDataGridView.Size = new System.Drawing.Size(488, 130);
             this.pessoaDataGridView.TabIndex = 26;
             // 
             // dataNascimentoDateEdit
@@ -245,18 +214,28 @@
             this.dataNascimentoDateEdit.Size = new System.Drawing.Size(100, 20);
             this.dataNascimentoDateEdit.TabIndex = 27;
             // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(446, 263);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(75, 25);
+            this.btnAtualizar.TabIndex = 28;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
             // FCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 345);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.dataNascimentoDateEdit);
             this.Controls.Add(this.pessoaDataGridView);
             this.Controls.Add(this.nomeTextEdit);
             this.Controls.Add(this.textBoxCpfCnpj);
             this.Controls.Add(cPFLabel);
             this.Controls.Add(this.cPFTextBox);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(dataNascimentoLabel);
             this.Controls.Add(this.dataNascimentoMaskedTextBox);
             this.Controls.Add(nomeLabel);
@@ -290,13 +269,10 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxPesquisaCodigo;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.TextBox textBoxPesquisa;
-        private System.Windows.Forms.ComboBox comboBoxFiltro;
         private System.Windows.Forms.MaskedTextBox dataNascimentoMaskedTextBox;
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox cPFTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -334,5 +310,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private DevExpress.XtraEditors.DateEdit dataNascimentoDateEdit;
         private System.Windows.Forms.BindingSource pessoaFisicaBindingSource;
+        private System.Windows.Forms.Button btnAtualizar;
     }
 }

@@ -27,6 +27,7 @@ namespace Prova.SysContrato.View
 
         private PessoaFisica pessoaFisca = new PessoaFisica();
         private PessoaJuridica pessoaJuridica = new PessoaJuridica();
+        RepositorioPessoa _repositorioPessoa = new RepositorioPessoa();
 
         public FCliente()
         {
@@ -40,8 +41,13 @@ namespace Prova.SysContrato.View
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            //clientedataGridView.DataSource = _repositorioCliente.PesquisarPorCPF(textBox1.Text);
-            pessoaDataGridView.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
+            if (_repositorioPessoa == null)
+            {
+                _repositorioBasePessoa = new RepositorioBase<Pessoa>();
+                RepositorioPessoa _repositorioPessoa = new RepositorioPessoa();
+            }
+
+            pessoaDataGridView.DataSource = _repositorioPessoa.PesquisarPorNome(textBoxPesquisa.Text);
         }
 
         private void FCliente_Load(object sender, EventArgs e)
@@ -93,7 +99,7 @@ namespace Prova.SysContrato.View
             }
         }
 
-        private void ListarCliente()
+        public void ListarCliente()
         {
             if (_repositorioBasePessoa == null)
             {
@@ -149,8 +155,6 @@ namespace Prova.SysContrato.View
                 FPessoaEdicao.PessoaId = (pessoaDataGridView.CurrentRow.DataBoundItem as PessoaFisica).Id;
                 FPessoaEdicao.ShowDialog();
             }
-
-
             catch (Exception ex)
             {
                 throw new Exception("Não foi possível acessar a rotina " + ex.Message);
@@ -213,16 +217,47 @@ namespace Prova.SysContrato.View
             if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 11)
             {
                 //  pessoaFisicaBindingSource = new BindingSource();
-
-                _repositorioPessoaFisica = new RepositorioPessoaFisica();
+                // _repositorioPessoaFisica = new RepositorioPessoaFisica();
 
                 if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 11)
                 {
                     // preenche grid
                     //   pessoaDataGridView.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
 
-                    pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(textBoxCpfCnpj.Text);
+                    if (_repositorioPessoaFisica == null)
+                    {
+                        _repositorioPessoaFisica = new RepositorioPessoaFisica();
+                    }
+
+                    pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text));
+                    pessoaDataGridView.DataSource = pessoaFisicaBindingSource.DataSource;
+
+                    if (_repositorioPessoaFisica.CPFExiste(HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text))) ;
+                    {
+                        try
+                        {
+                            FPessoaEdicao FPessoaEdicao = new FPessoaEdicao();
+                            FPessoaEdicao.PessoaId = (pessoaDataGridView.CurrentRow.DataBoundItem as PessoaFisica).Id;
+                             FPessoaEdicao.ShowDialog();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Não foi possível acessar a rotina " + ex.Message);
+                        }
+                    }
+
                 }
+
+
+                if (_repositorioPessoa == null)
+                {
+                    _repositorioBasePessoa = new RepositorioBase<Pessoa>();
+                    RepositorioPessoa _repositorioPessoa = new RepositorioPessoa();
+                }
+
+                pessoaDataGridView.DataSource = _repositorioPessoa.PesquisarPorNome(textBoxPesquisa.Text);
+
+
             }
             else
             {
@@ -244,9 +279,6 @@ namespace Prova.SysContrato.View
 
         private void textBoxCpfCnpj_Validating_1(object sender, CancelEventArgs e)
         {
-
-
-
             if (HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text).Length == 14)
             {
                 using (FPessoaJuridica Fcliente = new FPessoaJuridica())
@@ -268,5 +300,13 @@ namespace Prova.SysContrato.View
         {
             textBoxCpfCnpj.Text = HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text);
         }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            ListarCliente();
+        }
+
+
+
     }
 }

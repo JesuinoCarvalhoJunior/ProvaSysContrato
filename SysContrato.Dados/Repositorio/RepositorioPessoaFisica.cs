@@ -34,6 +34,22 @@ namespace SysContrato.Dados.Repositorio
             {
                 try
                 {
+                    return session.Query<PessoaFisica>().Where(c => c.Cpf.Equals(CPF)).ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao pesquisa o registro" + ex.Message);
+
+                }
+            }
+        }
+
+        public IList<PessoaFisica> PesquisarPorCPFAproximado(string CPF)
+        {
+            using (ISession session = NHibernateHelper.AbrirSessao())
+            {
+                try
+                {
                     return session.Query<PessoaFisica>().Where(c => c.Cpf.Contains(CPF)).ToList();
                 }
                 catch (Exception ex)

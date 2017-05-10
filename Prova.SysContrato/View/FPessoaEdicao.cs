@@ -17,20 +17,18 @@ namespace Prova.SysContrato.View
 
         private int pessoaId;
         private RepositorioPessoaFisica _repositorioPessoaFisica;
-        private PessoaFisica _pessoaFisca;
+        private Pessoa _pessoaFisca;
+       // private PessoaFisica pessoaFisca = new PessoaFisica();
 
-    
         public FPessoaEdicao()
         {
             InitializeComponent();
 
             pessoaFisicaBindingSource.DataSource = _pessoaFisca;
-
             _repositorioPessoaFisica = new RepositorioPessoaFisica();
-
             PesquisaPessoaId();
         }
-        
+
         public int PessoaId
         {
             get { return pessoaId; }
@@ -43,12 +41,17 @@ namespace Prova.SysContrato.View
 
         private void PesquisaPessoaId()
         {
-         pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorId(PessoaId);
+            _pessoaFisca = _repositorioPessoaFisica.PesquisarPorId(PessoaId);
+
+            pessoaFisicaBindingSource.DataSource = _pessoaFisca;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             _repositorioPessoaFisica.Alterar(_pessoaFisca);
+            FCliente fCliente  = new FCliente();
+            fCliente.ListarCliente();
             this.Close();
         }
     }

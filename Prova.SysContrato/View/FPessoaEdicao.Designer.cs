@@ -88,7 +88,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(221, 115);
+            this.button1.Location = new System.Drawing.Point(371, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 155);
+            this.ClientSize = new System.Drawing.Size(605, 339);
             this.Controls.Add(nomeLabel);
             this.Controls.Add(this.nomeTextEdit);
             this.Controls.Add(dataNascimentoLabel);
