@@ -40,7 +40,8 @@ namespace SysContrato.Dados
         public static ISession AbrirSessao()
         {
             return _sessionFactory.OpenSession();
-        }      
+        }
 
+       
     }
 }

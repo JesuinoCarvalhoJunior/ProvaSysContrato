@@ -14,6 +14,7 @@ namespace SysContrato.Dados.Mapeamento
         {
             Id(c => c.Id).GeneratedBy.Native();
             Map(c => c.Nome).Length(60).Not.Nullable();
+            HasMany(c => c.Telefones).Cascade.All().Not.LazyLoad();
         }
     }
 }

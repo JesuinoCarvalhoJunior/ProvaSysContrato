@@ -24,14 +24,25 @@ namespace Prova.SysContrato.View
 
             if ((pCpfCnpj.Length != 11) && (pCpfCnpj.Length != 14))
             {
-                result = pCpfCnpj; 
+                result = pCpfCnpj;
             }
             return result;
 
         }
         public static string FormataCNPJ(string CNPJ)
         {
+
             return Convert.ToUInt64(CNPJ).ToString(@"00\.000\.000\/0000\-00");
+
+            // return String.Format(@"{0:00\.000\.000\/0000\-00}", CNPJ);
+            /*
+                        return string.Format("{0}.{1}.{2}/{3}-{4}",
+                                    CNPJ.Substring(0, 2),
+                                    CNPJ.Substring(2, 3),
+                                    CNPJ.Substring(5, 3),
+                                    CNPJ.Substring(8, 4),
+                                 CNPJ.Substring(12, 2));
+                                  */
         }
 
         public static string FormatCPF(string CPF)

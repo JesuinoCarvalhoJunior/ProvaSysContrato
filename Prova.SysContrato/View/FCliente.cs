@@ -9,6 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils;
+using DevExpress.XtraGrid.Views.Base;
+using System.Globalization;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Prova.SysContrato.View
 {
@@ -68,7 +72,22 @@ namespace Prova.SysContrato.View
                 }
                 else
                 {
+                    RepositorioTelefone _repositorioTelefone = new RepositorioTelefone();
+
+                    Telefone tel = new Telefone();
+                    tel.CodigoDdd = 65;
+                    tel.Numero = "33";
+                    tel.Principal = true;
+                    
+                   // pessoaFisca.Telefones.Add(new Telefone()
+                   // {
+                   //     CodigoDdd = 65,
+                   //     Numero = "123456789"
+                  //  });
+
                     _repositorioPessoaFisica.Inserir(pessoaFisca);
+
+                    _repositorioTelefone.Inserir(tel); ;
                     ListarCliente();
                 }
             }
@@ -107,6 +126,7 @@ namespace Prova.SysContrato.View
 
             }
             pessoaDataGridView.DataSource = _repositorioBasePessoa.Pesquisa();
+            gridControl1.DataSource = _repositorioBasePessoa.Pesquisa();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -173,24 +193,8 @@ namespace Prova.SysContrato.View
         //}
         //    ListarCliente();
         //
-        private void cPFTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            if ((HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 11) && (HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 14))
-            {
-                MessageBox.Show("CPF ou CNPJ inváildo!");
-                cPFTextBox.Focus();
-                cPFTextBox.Clear();
-            }
-            else
-            {
-                cPFTextBox.Text = HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text);
-            }
-        }
 
-        private void cPFTextBox_Enter(object sender, EventArgs e)
-        {
-            cPFTextBox.Text = HelperFormatacao.RemoverFormatacao(cPFTextBox.Text);
-        }
+
 
 
         private void clientedataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -198,19 +202,7 @@ namespace Prova.SysContrato.View
 
         }
 
-        private void cpfTextEdit_Validating(object sender, CancelEventArgs e)
-        {
-            // if ((HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 11) && (HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text).Length != 14))
-            //{
-            //     MessageBox.Show("CPF ou CNPJ inváildo!");
-            //     cPFTextBox.Focus();
-            //     cPFTextBox.Clear();
-            // }
-            // else
-            // {
-            cPFTextBox.Text = HelperFormatacao.FormataCPFCNPJ(cPFTextBox.Text);
-            //}
-        }
+
 
         private void textBoxCpfCnpj_Validating(object sender, CancelEventArgs e)
         {
@@ -232,13 +224,13 @@ namespace Prova.SysContrato.View
                     pessoaFisicaBindingSource.DataSource = _repositorioPessoaFisica.PesquisarPorCPF(HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text));
                     pessoaDataGridView.DataSource = pessoaFisicaBindingSource.DataSource;
 
-                    if (_repositorioPessoaFisica.CPFExiste(HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text))) ;
+                    if (_repositorioPessoaFisica.CPFExiste(HelperFormatacao.RemoverFormatacao(textBoxCpfCnpj.Text)))
                     {
                         try
                         {
                             FPessoaEdicao FPessoaEdicao = new FPessoaEdicao();
                             FPessoaEdicao.PessoaId = (pessoaDataGridView.CurrentRow.DataBoundItem as PessoaFisica).Id;
-                             FPessoaEdicao.ShowDialog();
+                            FPessoaEdicao.ShowDialog();
                         }
                         catch (Exception ex)
                         {
@@ -306,7 +298,70 @@ namespace Prova.SysContrato.View
             ListarCliente();
         }
 
+        private void pessoaDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            double d;
+            // Aqui vem a coluna com os dados, no meu caso é a coluna 1
+            if (e.ColumnIndex == 3)
+            {
+                // Vejo se tem algo preenchido e eu estou convertendo
+                // para Double para aplicar uma máscara numérica
+                if (e.Value != null &&
+                Double.TryParse(e.Value.ToString(), out d))
+                {
+                    Console.WriteLine(e.Value.ToString().Length);
+                    // Se for até 11 caracteres, considero CPF
+                    if (e.Value.ToString().Length <= 11)
+                        e.Value = d.ToString("###'.'###'.'###-##");
+                    // De 12 a 14, CNPJ
+                    else if (e.Value.ToString().Length > 11 &&
+                    e.Value.ToString().Length <= 14)
+                        e.Value = d.ToString("##'.'###'.'###/####-##");
 
 
+                }
+            }
+        }
+
+        private void gridView1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
+        {
+
+            if (e.Column.FieldName != "CPFCNPJ")  return;
+
+
+            string DisplayTextTel = (e.Value != null) ? e.Value.ToString() : "";
+
+            if ( e.Column.FieldName == "Telefones") {
+
+               
+                DisplayTextTel = (e.Value == null) ? "Sem telefone" : e.Value.ToString();
+            }
+
+            string DisplayText = (e.Value != null) ? e.Value.ToString() : "";
+            try
+            {
+                if (DisplayText.Length == 11)
+                {
+                    e.DisplayText = String.Format("{0}.{1}.{2}-{3}",
+                                                   DisplayText.Substring(0, 3),
+                                                   DisplayText.Substring(3, 3),
+                                                   DisplayText.Substring(6, 3),
+                                                   DisplayText.Substring(9, 2));
+                }
+                else
+                {
+                    e.DisplayText = string.Format("{0}.{1}.{2}/{3}-{4}",
+                                                   DisplayText.Substring(0, 2),
+                                                   DisplayText.Substring(2, 3),
+                                                   DisplayText.Substring(5, 3),
+                                                   DisplayText.Substring(8, 4),
+                                                   DisplayText.Substring(12, 2));
+                }
+            }
+            catch (Exception ex)
+            {
+                //
+            }
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label dataNascimentoLabel;
-            System.Windows.Forms.Label nomeLabel;
             System.Windows.Forms.Label cPFLabel;
+            System.Windows.Forms.Label nomeLabel;
+            System.Windows.Forms.Label dataNascimentoLabel;
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -39,48 +39,34 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.textBoxPesquisa = new System.Windows.Forms.TextBox();
-            this.dataNascimentoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cPFTextBox = new System.Windows.Forms.TextBox();
-            this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBoxCpfCnpj = new System.Windows.Forms.TextBox();
-            this.nomeTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.pessoaFisicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaJuridicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pessoaDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataNascimentoDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.btnAtualizar = new System.Windows.Forms.Button();
-            dataNascimentoLabel = new System.Windows.Forms.Label();
-            nomeLabel = new System.Windows.Forms.Label();
+            this.pessoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nomeTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.pessoaFisicaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataNascimentoDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.telefoneBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             cPFLabel = new System.Windows.Forms.Label();
+            nomeLabel = new System.Windows.Forms.Label();
+            dataNascimentoLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaFisicaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pessoaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataNascimentoDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataNascimentoDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.telefoneBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataNascimentoLabel
-            // 
-            dataNascimentoLabel.AutoSize = true;
-            dataNascimentoLabel.Location = new System.Drawing.Point(316, 36);
-            dataNascimentoLabel.Name = "dataNascimentoLabel";
-            dataNascimentoLabel.Size = new System.Drawing.Size(92, 13);
-            dataNascimentoLabel.TabIndex = 17;
-            dataNascimentoLabel.Text = "Data Nascimento:";
-            // 
-            // nomeLabel
-            // 
-            nomeLabel.AutoSize = true;
-            nomeLabel.Location = new System.Drawing.Point(23, 10);
-            nomeLabel.Name = "nomeLabel";
-            nomeLabel.Size = new System.Drawing.Size(38, 13);
-            nomeLabel.TabIndex = 15;
-            nomeLabel.Text = "Nome:";
             // 
             // cPFLabel
             // 
@@ -90,6 +76,24 @@
             cPFLabel.Size = new System.Drawing.Size(30, 13);
             cPFLabel.TabIndex = 23;
             cPFLabel.Text = "CPF:";
+            // 
+            // nomeLabel
+            // 
+            nomeLabel.AutoSize = true;
+            nomeLabel.Location = new System.Drawing.Point(23, 6);
+            nomeLabel.Name = "nomeLabel";
+            nomeLabel.Size = new System.Drawing.Size(38, 13);
+            nomeLabel.TabIndex = 28;
+            nomeLabel.Text = "Nome:";
+            // 
+            // dataNascimentoLabel
+            // 
+            dataNascimentoLabel.AutoSize = true;
+            dataNascimentoLabel.Location = new System.Drawing.Point(316, 36);
+            dataNascimentoLabel.Name = "dataNascimentoLabel";
+            dataNascimentoLabel.Size = new System.Drawing.Size(92, 13);
+            dataNascimentoLabel.TabIndex = 29;
+            dataNascimentoLabel.Text = "Data Nascimento:";
             // 
             // btnAlterar
             // 
@@ -158,24 +162,6 @@
             this.textBoxPesquisa.Size = new System.Drawing.Size(393, 20);
             this.textBoxPesquisa.TabIndex = 1;
             // 
-            // dataNascimentoMaskedTextBox
-            // 
-            this.dataNascimentoMaskedTextBox.Location = new System.Drawing.Point(520, 125);
-            this.dataNascimentoMaskedTextBox.Mask = "00/00/0000";
-            this.dataNascimentoMaskedTextBox.Name = "dataNascimentoMaskedTextBox";
-            this.dataNascimentoMaskedTextBox.Size = new System.Drawing.Size(100, 20);
-            this.dataNascimentoMaskedTextBox.TabIndex = 20;
-            this.dataNascimentoMaskedTextBox.ValidatingType = typeof(System.DateTime);
-            // 
-            // cPFTextBox
-            // 
-            this.cPFTextBox.Location = new System.Drawing.Point(520, 99);
-            this.cPFTextBox.Name = "cPFTextBox";
-            this.cPFTextBox.Size = new System.Drawing.Size(100, 20);
-            this.cPFTextBox.TabIndex = 24;
-            this.cPFTextBox.Enter += new System.EventHandler(this.cPFTextBox_Enter);
-            this.cPFTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.cPFTextBox_Validating);
-            // 
             // textBoxCpfCnpj
             // 
             this.textBoxCpfCnpj.Location = new System.Drawing.Point(67, 29);
@@ -185,21 +171,32 @@
             this.textBoxCpfCnpj.Enter += new System.EventHandler(this.textBoxCpfCnpj_Enter);
             this.textBoxCpfCnpj.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxCpfCnpj_Validating);
             // 
+            // pessoaDataGridView
+            // 
+            this.pessoaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pessoaDataGridView.Location = new System.Drawing.Point(34, 59);
+            this.pessoaDataGridView.Name = "pessoaDataGridView";
+            this.pessoaDataGridView.Size = new System.Drawing.Size(488, 114);
+            this.pessoaDataGridView.TabIndex = 26;
+            this.pessoaDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.pessoaDataGridView_CellFormatting);
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(446, 263);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(75, 25);
+            this.btnAtualizar.TabIndex = 28;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
             // nomeTextEdit
             // 
             this.nomeTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.pessoaFisicaBindingSource, "Nome", true));
             this.nomeTextEdit.Location = new System.Drawing.Point(67, 3);
             this.nomeTextEdit.Name = "nomeTextEdit";
             this.nomeTextEdit.Size = new System.Drawing.Size(447, 20);
-            this.nomeTextEdit.TabIndex = 26;
-            // 
-            // pessoaDataGridView
-            // 
-            this.pessoaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.pessoaDataGridView.Location = new System.Drawing.Point(26, 67);
-            this.pessoaDataGridView.Name = "pessoaDataGridView";
-            this.pessoaDataGridView.Size = new System.Drawing.Size(488, 130);
-            this.pessoaDataGridView.TabIndex = 26;
+            this.nomeTextEdit.TabIndex = 29;
             // 
             // dataNascimentoDateEdit
             // 
@@ -212,33 +209,38 @@
             this.dataNascimentoDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dataNascimentoDateEdit.Size = new System.Drawing.Size(100, 20);
-            this.dataNascimentoDateEdit.TabIndex = 27;
+            this.dataNascimentoDateEdit.TabIndex = 30;
             // 
-            // btnAtualizar
+            // gridControl1
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(446, 263);
-            this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(75, 25);
-            this.btnAtualizar.TabIndex = 28;
-            this.btnAtualizar.Text = "Atualizar";
-            this.btnAtualizar.UseVisualStyleBackColor = true;
-            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            this.gridControl1.Location = new System.Drawing.Point(22, 305);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(520, 144);
+            this.gridControl1.TabIndex = 31;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView1_CustomColumnDisplayText);
             // 
             // FCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 345);
-            this.Controls.Add(this.btnAtualizar);
+            this.ClientSize = new System.Drawing.Size(658, 638);
+            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(dataNascimentoLabel);
             this.Controls.Add(this.dataNascimentoDateEdit);
-            this.Controls.Add(this.pessoaDataGridView);
+            this.Controls.Add(nomeLabel);
             this.Controls.Add(this.nomeTextEdit);
+            this.Controls.Add(this.btnAtualizar);
+            this.Controls.Add(this.pessoaDataGridView);
             this.Controls.Add(this.textBoxCpfCnpj);
             this.Controls.Add(cPFLabel);
-            this.Controls.Add(this.cPFTextBox);
-            this.Controls.Add(dataNascimentoLabel);
-            this.Controls.Add(this.dataNascimentoMaskedTextBox);
-            this.Controls.Add(nomeLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCancelar);
@@ -250,13 +252,16 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pessoaDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nomeTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pessoaFisicaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pessoaJuridicaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pessoaDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataNascimentoDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataNascimentoDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.telefoneBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,9 +276,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.TextBox textBoxPesquisa;
-        private System.Windows.Forms.MaskedTextBox dataNascimentoMaskedTextBox;
         private System.Windows.Forms.BindingSource clienteBindingSource;
-        private System.Windows.Forms.TextBox cPFTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -298,18 +301,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.BindingSource pessoaBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.TextBox textBoxCpfCnpj;
-        private DevExpress.XtraEditors.TextEdit nomeTextEdit;
         private System.Windows.Forms.DataGridView pessoaDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
-        private DevExpress.XtraEditors.DateEdit dataNascimentoDateEdit;
-        private System.Windows.Forms.BindingSource pessoaFisicaBindingSource;
         private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.BindingSource pessoaBindingSource;
+        private DevExpress.XtraEditors.TextEdit nomeTextEdit;
+        private System.Windows.Forms.BindingSource pessoaFisicaBindingSource;
+        private DevExpress.XtraEditors.DateEdit dataNascimentoDateEdit;
+        private System.Windows.Forms.BindingSource telefoneBindingSource;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

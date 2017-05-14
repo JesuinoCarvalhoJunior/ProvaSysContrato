@@ -136,6 +136,7 @@
     <None Include="SysContrato.Dominio.Entidade.Pessoa.datasource" />
     <None Include="SysContrato.Dominio.Entidade.PessoaFisica.datasource" />
     <None Include="SysContrato.Dominio.Entidade.PessoaJuridica.datasource" />
+    <None Include="SysContrato.Dominio.Entidade.Telefone.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

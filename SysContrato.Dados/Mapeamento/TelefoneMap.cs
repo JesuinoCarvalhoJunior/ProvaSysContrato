@@ -23,7 +23,14 @@ namespace SysContrato.Dados.Mapeamento
             Map(c => c.Numero)
                 .Not.Nullable().Length(9);
 
-            References(c => c.Pessoa);
+            Map(c => c.Principal)
+                .Not.Nullable().Length(1);
+
+          //  References(c => c.Pessoa);
+
+             References(c => c.Pessoa).Fetch.Join().Not.LazyLoad(); 
+           //References(c => c.Pessoa, "Pessoa_Id").Fetch.Join();
+ 
 
         }
     }
