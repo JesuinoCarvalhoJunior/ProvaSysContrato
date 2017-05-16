@@ -213,10 +213,11 @@
             // 
             // gridControl1
             // 
+            this.gridControl1.DataSource = this.pessoaBindingSource;
             this.gridControl1.Location = new System.Drawing.Point(22, 305);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(520, 144);
+            this.gridControl1.Size = new System.Drawing.Size(590, 170);
             this.gridControl1.TabIndex = 31;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -231,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 638);
+            this.ClientSize = new System.Drawing.Size(853, 495);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(dataNascimentoLabel);
             this.Controls.Add(this.dataNascimentoDateEdit);

@@ -40,6 +40,8 @@ namespace Prova.SysContrato.View
 
             pessoaFisicaBindingSource.DataSource = pessoaFisca;
 
+
+
             ListarCliente();
         }
 
@@ -78,12 +80,12 @@ namespace Prova.SysContrato.View
                     tel.CodigoDdd = 65;
                     tel.Numero = "33";
                     tel.Principal = true;
-                    
-                   // pessoaFisca.Telefones.Add(new Telefone()
-                   // {
-                   //     CodigoDdd = 65,
-                   //     Numero = "123456789"
-                  //  });
+
+                    // pessoaFisca.Telefones.Add(new Telefone()
+                    // {
+                    //     CodigoDdd = 65,
+                    //     Numero = "123456789"
+                    //  });
 
                     _repositorioPessoaFisica.Inserir(pessoaFisca);
 
@@ -326,14 +328,15 @@ namespace Prova.SysContrato.View
         private void gridView1_CustomColumnDisplayText(object sender, CustomColumnDisplayTextEventArgs e)
         {
 
-            if (e.Column.FieldName != "CPFCNPJ")  return;
+            if (e.Column.FieldName != "CPFCNPJ") return;
 
 
             string DisplayTextTel = (e.Value != null) ? e.Value.ToString() : "";
 
-            if ( e.Column.FieldName == "Telefones") {
+            if (e.Column.FieldName == "Telefones")
+            {
 
-               
+
                 DisplayTextTel = (e.Value == null) ? "Sem telefone" : e.Value.ToString();
             }
 
