@@ -366,5 +366,10 @@ namespace Prova.SysContrato.View
                 //
             }
         }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
